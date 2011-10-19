@@ -23,6 +23,7 @@ use InvalidArgumentException;
 use Doctrine\ODM\MongoDB\Mapping\MappingException;
 use Doctrine\ODM\MongoDB\LockException;
 use Doctrine\ODM\MongoDB\Proxy\Proxy;
+use Doctrine\ODM\MongoDB\Types\Type;
 
 /**
  * A <tt>ClassMetadata</tt> instance holds all the object-document mapping metadata
@@ -1286,7 +1287,7 @@ class ClassMetadataInfo implements \Doctrine\Common\Persistence\Mapping\ClassMet
     public function getPHPIdentifierValue($id)
     {
         $idType = $this->fieldMappings[$this->identifier]['type'];
-        return Types\Type::getType($idType)->convertToPHPValue($id);
+        return Type::getType($idType)->convertToPHPValue($id);
     }
 
     /**
@@ -1298,7 +1299,7 @@ class ClassMetadataInfo implements \Doctrine\Common\Persistence\Mapping\ClassMet
     public function getDatabaseIdentifierValue($id)
     {
         $idType = $this->fieldMappings[$this->identifier]['type'];
-        return Types\Type::getType($idType)->convertToDatabaseValue($id);
+        return Type::getType($idType)->convertToDatabaseValue($id);
     }
 
     /**
