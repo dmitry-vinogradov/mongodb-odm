@@ -71,6 +71,13 @@ class Cursor extends BaseCursor
      */
     private $class;
 
+    /**
+     * The array of hints for the UnitOfWork.
+     *
+     * @var array
+     */
+    private $hints = array();
+
     /** @override */
     public function __construct(Connection $connection, Collection $collection, UnitOfWork $uow, ClassMetadata $class, BaseCursor $baseCursor, array $query = array(), array $fields = array(), $numRetries = 0)
     {
